@@ -19,6 +19,29 @@ namespace FormApp.Models{
                 return _products;
             }
         }
+
+        public static void CreateProduct(Product entity){
+            _products.Add(entity);
+        }
+        public static void EditProduct(Product updateProduct){
+            var entity = _products.FirstOrDefault(p=>p.ProductId == updateProduct.ProductId);
+
+            if(entity != null){
+                entity.Name = updateProduct.Name;
+                entity.Price = updateProduct.Price;
+                entity.Image = updateProduct.Image;
+                entity.IsActive = updateProduct.IsActive;
+                entity.CategoryId = updateProduct.CategoryId;
+            }
+        }
+
+        public static void DeleteProduct(Product entity){
+            var Prdentity = _products.FirstOrDefault(p=>p.ProductId == entity.ProductId);
+
+            if(Prdentity != null){
+                _products.Remove(Prdentity);
+            }
+        }
         public static List<Category> Categories{
             get{
                 return _categories;
