@@ -98,7 +98,6 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-
     public async Task<IActionResult> Edit(int id, Product model, IFormFile? imageFile){
         var allowenExtensions = new[] {".jpg",".png",".jpeg"};
         if(imageFile != null){
